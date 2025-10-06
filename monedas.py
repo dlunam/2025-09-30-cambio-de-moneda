@@ -1,19 +1,20 @@
-def cambio_minimo(cantidad):
-    denominaciones = [100, 50, 20, 10, 5, 1, 0.5, 0.25, 0.1, 0.05, 0.01]
+def cambio_minimo(dinero):
+    efectivo = [100, 50, 20, 10, 5, 1, 0.5, 0.25, 0.1, 0.05, 0.01]
     resultado = {}
 
-    for d in denominaciones:
-        cantidad = round(cantidad, 2)  # Evita errores de punto flotante
-        if cantidad >= d:
-            num = int(cantidad // d)
-            resultado[d] = num
-            cantidad -= num * d
+    for tipo in efectivo:
+        dinero = round(dinero, 2)
+        if dinero >= tipo:
+            num = int(dinero // tipo)
+            resultado[tipo] = num
+            dinero -= num * tipo
 
     return resultado
 
-# Ejemplo de uso
-cantidad = 286.73
-cambio = cambio_minimo(cantidad)
-print("Cambio mínimo para", cantidad, ":")
-for denom, cantidad in cambio.items():
-    print(f"{cantidad} x {denom}")
+# Preguntar al usuario cuánto dinero tiene
+dinero = float(input("¿Cuánto dinero tienes? "))
+
+cambio = cambio_minimo(dinero)
+print("Cambio mínimo para", dinero, ":")
+for tipo, cantidad_tipo in cambio.items():
+    print(f"{cantidad_tipo} x {tipo}")
